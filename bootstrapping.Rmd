@@ -78,4 +78,29 @@ sim_df_nonconst |>
 ```
 
 
+## Draw  and analyze a bootstrap sample
+
+Start with a lil function
+
+```{r}
+boot_sample = function(df) {
+  
+  sample_frac(df, replace = TRUE)
+  
+}
+```
+
+Let's see how this works
+
+```{r}
+sim_df_nonconst |> 
+  boot_sample() |> 
+  ggplot(aes(x = x, y = y)) +
+  geom_point(alpha = .5) +
+  stat_smooth(method = "lm")
+```
+
+
+
+
 
